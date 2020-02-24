@@ -1,11 +1,13 @@
 ---
+layout: post
+title: Escaping a literal question mark in PowerShell
+description: It isn't as straightforward as you may think for cmdlets which support wildcards
+#categories: [PowerShell, Scripting] -- ends up in URL!
 tags:
-- powershell
-- wildcards
-- escaping
+  - PowerShell
+  - wildcards
+  - escaping
 ---
-# Escaping a literal question mark in PowerShell
-
 I came across some PowerShell code like `Get-Process | ?{ $_.ProcessName -Match "^ex.*" }`
 but didn't know what `?{ … }` does. I only knew `%{ … }`, which is the
 shorthand notation of a `For-Each` where `$_` refers to the current element.
@@ -187,10 +189,10 @@ Get-Process | Where-Object { $_.ProcessName -Match "^ex.*" }
 Get-Process | Where-Object ProcessName -Match "^ex.*"
 ```
 
-1. script block format with shorthand
-2. script block format
-3. comparison statement format
-4. bonus: very short variant with slightly [different behavior][9]:
+1. Script block format with shorthand
+2. Script block format
+3. Comparison statement format
+4. Bonus: very short variant with slightly [different behavior][9]:
 
 ```powershell
 ps | Where ProcessName -M "^ex.*"
