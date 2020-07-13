@@ -45,7 +45,7 @@ Alias        iex -> Invoke-Expression
 ## Too many alias lookup results
 
 When I tried `Get-Alias ?` it answered my question (`?` is equivalent to
-`Where-Object`), but to my surprised some other single character aliases were
+`Where-Object`), but to my surprise some other single character aliases were
 listed too:
 
 ```
@@ -62,7 +62,7 @@ PowerShell documentation [About Special Characters][2] does not list it in the
 table of recognized escape sequences. I gave it a shot and tried
 ```Get-Alias `?```
 anyway, but the result remained the same. I also tried a few other common
-escaping patterns such as `Get-Alias \?`, wrapped in quotes, but it either
+escaping patterns such as `Get-Alias \?` and wrapping in quotes, but it either
 returned the same list or nothing.
 
 ## Escaping wildcard characters
@@ -152,14 +152,14 @@ itself, and the other because everything that is entered by the user is a
 string at first. For example, `40+2` is a sequence of characters. However, it
 gets evaluated to `42`. This requires parsing and casting the digits to numbers.
 If every input is implicitly converted, then it could be necessary to escape a
-single backtick with another one in order not to consume one and interpret the
+single backtick with another one in order to not consume it and interpret the
 subsequent character as wildcard instead of as literal.
 
 ## Summary
 
 `?` is an alias of `Where-Object`, which [selects objects from a collection][8]
 based on their property values. You can find that out with `Get-Alias`. To look
-up just this alias and not every single-character alias, then you must escape
+up just this alias and not every single-character alias, you must escape
 the question mark:
 
 - **Single backtick** if you use the [PowerShell API](#what-is-the-powershell-api),
@@ -175,7 +175,7 @@ the question mark:
   Get-Alias ``?
   ```
 
-- **Four backticks** if it's string that you want to run as code:
+- **Four backticks** if it's a string that you want to run as code:
 
   ```powershell
   Invoke-Expression "Get-Alias ````?"
